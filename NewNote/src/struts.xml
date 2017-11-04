@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+	    <global-results>
+	        <result name="login" >/login.jsp</result>
+	    </global-results>
+	    <action name="login" class="liuyanban.action.LoginAction">
+	        <result type="redirectAction">listNotes.action</result>
+	    </action>
+	    <action name="Reg" class="liuyanban.action.RegAction">
+	        <result name="success" >/login.jsp</result>
+	        <result name="input" >/register.jsp</result>
+	    </action>
+	    <action name="logout" class="liuyanban.action.LoginAction" method="logout"/>
+	    <action name="listNotes" class="liuyanban.action.NotesAction" method="list">
+	        <result name="success" >/index.jsp</result>
+	    </action>   
+	     <action name="addNote" class="liuyanban.action.NotesAction" method="add">
+	        <result name="success" type="redirectAction">
+	            listNotes
+	        </result>
+	        <result name="input" >/post.jsp</result>
+	    </action>
+	    <action name="detail" class="liuyanban.action.NotesAction" method="detail">
+	        <result name="success" >/detail.jsp</result>
+	    </action>
+	</package>
+</struts>
