@@ -99,10 +99,7 @@
 	  }
 	}
 	function fun_getVcode(){
-	  var timenow = new Date().getTime();
-	  var uid = document.getElementById("uuid").value;  
-	  document.getElementById("vcodeimg1").src =   
-	        "https://vcs.suning.com/vcs/imageCode.htm?uuid="+ uid +"&yys=" + timenow;
+		document.getElementById("vcodeimg1").src = "validatecode?"+Math.random(); 
 	}
 </script>
 

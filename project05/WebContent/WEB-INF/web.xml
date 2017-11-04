@@ -49,5 +49,25 @@
    <servlet-name>ValidateServlet</servlet-name>
    <url-pattern>/validateServlet</url-pattern>
 </servlet-mapping>
+
+
+ <servlet>
+     <servlet-name>SendEmailServlet</servlet-name>
+     <servlet-class>project05.SendEmailServlet</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+     <servlet-name>SendEmailServlet</servlet-name>
+     <url-pattern>/sendEmailServlet</url-pattern>
+ </servlet-mapping>
+  <servlet>
+     <servlet-name>RegisterEmailServlet</servlet-name>
+     <servlet-class>project05.RegisterEmailServlet</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+     <servlet-name>RegisterEmailServlet</servlet-name>
+     <url-pattern>/registerEmailServlet</url-pattern>
+ </servlet-mapping>
   
 </web-app>
