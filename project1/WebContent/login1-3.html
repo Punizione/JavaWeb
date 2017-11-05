@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>登录_易购网触屏版</title>
+<link rel="stylesheet" type="text/css" href="css/module.css">
+<link rel="stylesheet" type="text/css" href="css/member.css">
+</head>
+<body>
+<nav class="nav w pr">
+  <a class="goback" href="javascript:history.back(1)">返回</a>
+  <div class="nav-title wb">用户登录</div>
+  <div class="title-submit-ui-a">
+    <a href="">注册</a>
+  </div>
+</nav>
+<div class="login w f14">
+  <form id="formlogon" name="formlogon" method="post" action="task1-3.jsp">
+   <ul class="input-list mt10" id="Login_Check">
+    <li>
+      <input type="text" class="input-ui-a" placeholder="用户名:手机/邮箱/昵称" 
+            name="logonName" id="logonName">
+    </li>
+    <li>
+      <input type="password" class="input-ui-a" placeholder="密码："  
+            name="password" id="password">
+    </li>
+   </ul>  
+   <div class="btn-ui-b mt10">
+      <a href="javascript:void(0);" onclick="formlogon.submit();">登录</a>
+   </div>
+  </form>
+</div>
+<div id="footer" class="w">
+  <ul class="list-ui-a">
+    <li>
+      <div class="w user-login">
+        <a  href="#" id="footerLogin" class="foot1">登录</a>
+        <a  href="#" id="footerRegister" class="foot2">注册</a>  
+        <a  href="#" id="shopCartTip" class="foot3">购物车</a>
+      </div>
+    </li>
+  </ul>
+  <div class="copyright">Copyright© 2012-2018 m.ebuy.com</div>
+</div>
+</body>
+</html>
