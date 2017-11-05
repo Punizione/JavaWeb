@@ -10,13 +10,12 @@ import javax.mail.internet.*;
 import javax.activation.*;
  
 public class SendEmailServlet extends HttpServlet{
-    static final String FROM = "1273435147@qq.com";
+    static final String FROM = "example@qq.com";
     static final int PORT = 465;
     static final String PROTOCOL = "smtp";
     static final String HOST = "smtp.qq.com";
-    static final String USR = "1273435147@qq.com";
-    static final String PWD = "onspeed00";
-    static final String PW = "rnutfdzvpisqjejh";
+    static final String USR = "example@qq.com";
+    static final String PW = "Your Email Key";
   public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
 	  doPost(request, response);
    }
@@ -27,29 +26,29 @@ public class SendEmailServlet extends HttpServlet{
       UserManage userm=new UserManage();
 	  if(user!=null && !user.isEmpty()){
 		   /* if(userm.getUser(user)){
-		      request.setAttribute("info", "¸ÃÓÃ»§ÃûÒÑ¾­×¢²á¹ı");
+		      request.setAttribute("info", "è¯¥ç”¨æˆ·åå·²ç»æ³¨å†Œè¿‡");
 		      request.getRequestDispatcher("message.jsp").forward(request,response);
 		    }else{*/
 	  
-		  // ÊÕ¼şÈËµÄµç×ÓÓÊ¼ş ID
+		  // æ”¶ä»¶äººçš„ç”µå­é‚®ä»¶ ID
 	      String to = request.getParameter("username");
 	 
 	
-	      // ·¢¼şÈËµÄµç×ÓÓÊ¼ş ID
-	      String from = "1273435147@qq.com";
+	      // å‘ä»¶äººçš„ç”µå­é‚®ä»¶ ID
+	      String from = "example@qq.com";
 	 
-	      // ¼ÙÉèÄúÊÇ´Ó±¾µØÖ÷»ú·¢ËÍµç×ÓÓÊ¼ş
+	      // å‡è®¾æ‚¨æ˜¯ä»æœ¬åœ°ä¸»æœºå‘é€ç”µå­é‚®ä»¶
 	      String host = "localhost";
 	
 	 
-	      // »ñÈ¡ÏµÍ³µÄÊôĞÔ
+	      // è·å–ç³»ç»Ÿçš„å±æ€§
 	      Properties properties = new Properties();
 	    //  properties.setProperty("","");
 	    //  properties.setProperty("mail.password",PWD);
 	    // properties.setProperty("mail.user",USR);
 	      
 	 
-	      // ÉèÖÃÓÊ¼ş·şÎñÆ÷
+	      // è®¾ç½®é‚®ä»¶æœåŠ¡å™¨
 	      properties.setProperty("mail.smtp.host", HOST);
 	      properties.put("mail.transport.protocol" , PROTOCOL);
 	      
@@ -65,32 +64,32 @@ public class SendEmailServlet extends HttpServlet{
             });
 	      
 	 
-	      // »ñÈ¡Ä¬ÈÏµÄ Session ¶ÔÏó
+	      // è·å–é»˜è®¤çš„ Session å¯¹è±¡
 	     // Session session = Session.getInstance(properties);
 	      
-	      // ÉèÖÃÏìÓ¦ÄÚÈİÀàĞÍ
+	      // è®¾ç½®å“åº”å†…å®¹ç±»å‹
 	      response.setContentType("text/html;charset=UTF-8");
 	      PrintWriter out = response.getWriter();
 	      String link = "http://localhost:8080/project05/registerEmailServlet?user="+user+"&password="+pass;
 	
 	      try{
-	         // ´´½¨Ò»¸öÄ¬ÈÏµÄ MimeMessage ¶ÔÏó
+	         // åˆ›å»ºä¸€ä¸ªé»˜è®¤çš„ MimeMessage å¯¹è±¡
 	         MimeMessage message = new MimeMessage(session);
-	         // ÉèÖÃ From: header field of the header.
+	         // è®¾ç½® From: header field of the header.
 	         message.setFrom(new InternetAddress(FROM));
-	         // ÉèÖÃ To: header field of the header.
+	         // è®¾ç½® To: header field of the header.
 	         message.addRecipient(Message.RecipientType.TO,
 	                                  new InternetAddress(to));
-	         // ÉèÖÃ Subject: header field
-	         message.setSubject("×¢²á¼¤»î");
-	         // ÏÖÔÚÉèÖÃÊµ¼ÊÏûÏ¢
-	         message.setText("ÕâÊÇÒ»·â¼¤»îÓÊ¼ş,ÄúÔÚÍøÕ¾×¢²áÕË»§:"+user+",Èç¹ûÄúÈ·ÈÏ×¢²á,Çëµ¥»÷ÈçÏÂÁ´½Ó:"+link);
-	         // ·¢ËÍÏûÏ¢
+	         // è®¾ç½® Subject: header field
+	         message.setSubject("æ³¨å†Œæ¿€æ´»");
+	         // ç°åœ¨è®¾ç½®å®é™…æ¶ˆæ¯
+	         message.setText("è¿™æ˜¯ä¸€å°æ¿€æ´»é‚®ä»¶,æ‚¨åœ¨ç½‘ç«™æ³¨å†Œè´¦æˆ·:"+user+",å¦‚æœæ‚¨ç¡®è®¤æ³¨å†Œ,è¯·å•å‡»å¦‚ä¸‹é“¾æ¥:"+link);
+	         // å‘é€æ¶ˆæ¯
 	         Transport transport = session.getTransport();
 	         transport.connect(USR, PW);
 	         transport.send(message);
-	         String title = "ÇëÇ°ÍùÓÊÏäÈ·ÈÏ×¢²á";
-	         String res = "ÓÊ¼şÒÑ·¢Íù"+to+",ÇëÈ·ÈÏ×¢²á";
+	         String title = "è¯·å‰å¾€é‚®ç®±ç¡®è®¤æ³¨å†Œ";
+	         String res = "é‚®ä»¶å·²å‘å¾€"+to+",è¯·ç¡®è®¤æ³¨å†Œ";
 	         String docType = "<!DOCTYPE html> \n";
 	         out.println(docType +
 	         "<html>\n" +
@@ -104,7 +103,7 @@ public class SendEmailServlet extends HttpServlet{
 	      }		
 		 /*}*/
 	  }else{
-		    request.setAttribute("info", "ÓÃ»§ÊäÈëµÄ×¢²áĞÅÏ¢ÓĞÎó£¡");
+		    request.setAttribute("info", "ç”¨æˆ·è¾“å…¥çš„æ³¨å†Œä¿¡æ¯æœ‰è¯¯ï¼");
 		    request.getRequestDispatcher("message.jsp").forward(request,response);
 	}
 		 
