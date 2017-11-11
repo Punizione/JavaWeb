@@ -86,7 +86,9 @@ function changeSelect(chk){
    <input class="button" value="柱形图浏览投票结果" type="button"  
          onclick="window.open('viewresult?showmode=bar')"/> 
    <input class="button" value="饼形图浏览投票结果" type="button" 
-         onclick="window.open('viewresult?showmode=pie')"/>    
+         onclick="window.open('viewresult?showmode=pie')"/>
+           <input class="button" value="环形图浏览投票结果" type="button" 
+        onclick="window.open('viewresult?showmode=circle')"/>  
   </div> 
   <ul class="list-ui-a foot-list tc">
     <li>

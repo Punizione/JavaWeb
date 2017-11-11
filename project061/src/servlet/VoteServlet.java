@@ -1,6 +1,8 @@
 package servlet;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Paint;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -25,8 +27,10 @@ import org.jfree.chart.labels.StandardCategoryToolTipGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieToolTipGenerator;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.DefaultDrawingSupplier;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.RingPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.CategoryDataset;
@@ -81,9 +85,13 @@ protected void showresult(HttpServletRequest request,
 	  JFreeChart chart = null;
 	  if ("pie".equals(showmode))     // 绘制饼型图
 	    chart = getChartForPie();
-	  else
+	  else if("bar".equals(showmode)) {
+		  chart = getChartForBar();
+	  }else if("circle".equals(showmode)) {
+		  chart = getChartForCircle();
+	  }
 	    // 绘制柱型图
-	    chart = getChartForBar();
+	    
 	  if (chart != null) {
 	    myplot(showmode, chart);                         // 设置各标签的显示样式
 	    String webName = getServletContext().getRealPath("/img");
@@ -142,6 +150,27 @@ private JFreeChart getChartForPie() {
   }    
   return chart;
 }  
+
+
+private JFreeChart getChartForCircle() {
+	DefaultPieDataset dataSet = null;
+	JFreeChart chart = null;
+	String title = "";
+	String subtitle = "";
+	width = 550;
+	height = 430;
+	setCN();
+	dataSet = getDataSetForPieAndOption();
+	title = "各个手机品牌所得票数";
+	if(dataSet != null && dataSet.getItemCount() >0) {
+		chart = ChartFactory.createRingChart(title, dataSet, true,false, false);
+		chart.getLegend().setVisible(false);
+	}
+	return chart;
+	
+	
+	
+}
 private void myplot(String showmode, JFreeChart chart) {
 	  if ("pie".equals(showmode)) {
 	    PiePlot pieplot = (PiePlot) chart.getPlot();
@@ -149,7 +178,7 @@ private void myplot(String showmode, JFreeChart chart) {
 	    pieplot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} 票数:{1}")) ; 
 	    // 设置热区标签样式
 	    pieplot.setToolTipGenerator(new StandardPieToolTipGenerator("{0} 比例:{2}")) ; 
-	  } else {
+	  } else if("bar".equals(showmode)) {
 	    CategoryPlot barplot = (CategoryPlot) chart.getCategoryPlot();
 	    BarRenderer br = (BarRenderer) barplot.getRenderer();
 	    // 设置鼠标提示
@@ -159,6 +188,41 @@ private void myplot(String showmode, JFreeChart chart) {
 	    br.setItemLabelAnchorOffset(10) ;
 	    CategoryAxis categoryaxis = barplot.getDomainAxis() ;
 	    categoryaxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45) ;
+	  }else if("circle".equals(showmode)) {
+		  RingPlot ringplot = (RingPlot) chart.getPlot();
+	      ringplot.setOutlineVisible(false);
+	      ringplot.setLabelGenerator(new StandardPieSectionLabelGenerator("{2}"));
+	        ringplot.setBackgroundPaint(new Color(253,253,253));
+	        ringplot.setOutlineVisible(false);
+	        ringplot.setLabelFont(new Font("宋体", Font.BOLD, 15));
+	        ringplot.setSimpleLabels(true);
+	        ringplot.setLabelLinkPaint(Color.WHITE);
+	        ringplot.setLabelOutlinePaint(Color.WHITE);
+	        ringplot.setLabelLinksVisible(false);
+	        ringplot.setLabelShadowPaint(null);
+	        ringplot.setLabelOutlinePaint(new Color(0,true));
+	        ringplot.setLabelBackgroundPaint(new Color(0,true));
+	        ringplot.setLabelPaint(Color.WHITE);
+	        
+	        ringplot.setSectionOutlinePaint(Color.WHITE);
+	        ringplot.setSeparatorsVisible(true);
+	        ringplot.setSeparatorPaint(Color.WHITE);
+	        ringplot.setShadowPaint(new Color(253,253,253));
+	        ringplot.setSectionDepth(0.58);
+	        ringplot.setStartAngle(90);
+	        ringplot.setDrawingSupplier(new DefaultDrawingSupplier(
+	                new Paint[] { 
+	                        new Color(134, 212, 222), 
+	                        new Color(174, 145, 195), 
+	                        new Color(255, 162, 195),
+	                        new Color(249, 163, 86),
+	                        new Color(119, 173, 195)
+	                        },
+	                DefaultDrawingSupplier.DEFAULT_OUTLINE_PAINT_SEQUENCE, 
+	                DefaultDrawingSupplier.DEFAULT_STROKE_SEQUENCE,
+	                DefaultDrawingSupplier.DEFAULT_OUTLINE_STROKE_SEQUENCE, 
+	                DefaultDrawingSupplier.DEFAULT_SHAPE_SEQUENCE));
+
 	  }
 	}
 
@@ -195,6 +259,8 @@ private DefaultPieDataset getDataSetForPieAndOption() {
   }
   return dataset;
 }
+
+
 
 //解决中文乱码的方法
 private void setCN() {
