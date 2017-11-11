@@ -1,38 +1,4 @@
-.easy-header {
-	width: 320px;
-	height: 175px;
-	margin: 0 auto;
-	background-size: 320px 175px;
-}
-
-.img-header {
-	float: left;
-	width: 70px;
-	height: 65px;
-	margin-left: 40px;
-	margin-top: 50px;
-	background: #e6e7e1;
-	border: #fff solid 1px;
-	border-radius: 5px;
-	box-shadow: 1px 1px 3px rgba(4,0,0,0.2);
-	text-align: center;
-}
-
-.header-text {
-	float: left;
-	margin-left: 10px;
-	margin-top: 60px;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(4,0,0,0.5);
-	width: 190px;
-	height: 80px;
-	overflow: hidden;
-}
-
-
-
-
-
+@charset "utf-8";
 .touch-filter {
 	font-size: 14px;
 	padding: 0 10px;
@@ -198,7 +164,7 @@
 .pro_gallery .pro_gallery_box li {
 	display: table-cell;
 	height: 260px;
-	background: url(http://script.suning.cn/css/ShoppingArea/V7/images/loading.gif) no-repeat center #fff;
+	background: url(http://script.suning.cn/css/ShoppingArea/V7/../images/loading.gif) no-repeat center #fff;
 	vertical-align: middle;
 }
 
@@ -430,12 +396,12 @@
 	width: 20px;
 	height: 21px;
 	padding-right: 10px;
-	background: url(images/zx-b1.png) no-repeat;
+	background: url(../images/zx-b1.png) no-repeat;
 	background-size: contain;
 }
 
 .zx-answer {
-	background: url(images/zx-b2.png) no-repeat;
+	background: url(../images/zx-b2.png) no-repeat;
 	background-size: contain;
 }
 
@@ -559,8 +525,9 @@
 	top: 52px;
 	width: 12px;
 	height: 15px;
-	background: url(images/arrow1.png) no-repeat;
 	background-size: contain;
+	background-image: url(../images/arrow1.png);
+	background-repeat: no-repeat;
 }
 
 .search-result {
@@ -572,7 +539,6 @@
 .city-choose-search {
 	border-top: 1px solid #CCC;
 }
-
 
 .stream-detail {
 	padding-left: 20px;
@@ -630,7 +596,7 @@
 	left: -26px;
 	width: 26px;
 	height: 12px;
-	background: url(images/stream.png) no-repeat;
+	background: url(../images/stream.png) no-repeat;
 	background-size: contain;
 }
 
@@ -647,7 +613,7 @@
 }
 
 .str-state .on .icon {
-	background: url(images/stream-on.png) no-repeat;
+	background: url(../images/stream-on.png) no-repeat;
 	background-size: contain;
 }
 
@@ -716,7 +682,7 @@
 	right: 1px;
 	width: 12px;
 	height: 12px;
-	background: url(images/ok.png) no-repeat;
+	background: url(../images/ok.png) no-repeat;
 	background-size: contain;
 }
 
@@ -943,7 +909,36 @@
 }
 
 /*cherry myeastygo 20131213 [[*/
+.easy-header {
+	width: 320px;
+	height: 175px;
+	margin: 0 auto;
+	background-size: 320px 175px;
+}
 
+.img-header {
+	float: left;
+	width: 70px;
+	height: 65px;
+	margin-left: 40px;
+	margin-top: 50px;
+	background: #e6e7e1;
+	border: #fff solid 1px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px rgba(4,0,0,0.2);
+	text-align: center;
+}
+
+.header-text {
+	float: left;
+	margin-left: 10px;
+	margin-top: 60px;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(4,0,0,0.5);
+	width: 190px;
+	height: 80px;
+	overflow: hidden;
+}
 
 .easy-box-con {
 	margin: 0 auto;
@@ -1013,7 +1008,7 @@
 	float: left;
 	width: 21px;
 	height: 21px;
-	background: url(images/jiazai.gif) no-repeat;
+	background: url(../images/jiazai.gif) no-repeat;
 	background-size: 21px 21px;
 }
 
@@ -1034,7 +1029,7 @@
 	width: 129px;
 	height: 88px;
 	margin: 0 auto;
-	background: url(images/sorry-icon.png) no-repeat;
+	background: url(../images/sorry-icon.png) no-repeat;
 	background-size: 129px 88px;
 }
 
@@ -1199,3 +1194,31 @@
 	color: #825201;
 	text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 }
+
+.jhy1 li{
+	margin: 0 5px 5px 0;
+}
+
+.jhy1 li:nth-child(2n){margin-right:0;}
+.jhy1 li a{display:block;}
+.jhy1 li:last-child{margin-right:0;}
+.jhy1 li img{width:158px;height:145px;}
+.jhy1 li p{
+	height: 32px;
+	line-height: 18px;
+	overflow: hidden;
+	color: #7A7A7A;
+	background: #F5F5F5;
+	text-indent: 2px;
+	width:150px;
+	padding-top: 10px;
+	padding-right: 2px;
+	padding-bottom: 10px;
+	padding-left: 6px;
+}
+.jhy1 li .snPrice{display:block;font-size:14px;padding-left:5px;background:#F5F5F5;}
+.view-more{position:relative;height:18px;text-overflow:ellipsis;overflow:hidden;border-bottom:1px solid #ccc;padding:10px;}
+.view-more .arrow{position:absolute;height:14px;bottom:0;left:0;background:#F2EDE0 url(images/arrow2.png) no-repeat center;width:100%;background-size:10px;-webkit-transform:scaleY(-1);}
+.view-more .arrow.down{-webkit-transform:scaleY(1);}
+.view-more.down{height:auto;}
+.load-more-lay a{display:block;height:35px;line-height:35px;text-align:center;color:#313131;padding:20px;}
