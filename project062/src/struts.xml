@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <!-- 设置全局配置文件 -->   
+    <constant name="struts.custom.i18n.resources" value="messageResource"/>   
+    <!-- 解决中文乱码 -->   
+    <constant name="struts.i18n.encoding" value="UTF-8"/>  
+    <package name="list" extends="struts-default">
+        <action name="localeAction" class="project062.ChangeLocale">
+            <result>/task6-3.jsp</result>
+        </action>   
+    </package>     
+</struts>
