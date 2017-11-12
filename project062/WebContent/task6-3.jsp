@@ -64,8 +64,8 @@
               <s:url action="localeAction" id="urlb">   
                 <s:param name="lan" value="2"></s:param>   
               </s:url>   
-              <a href="<s:property value="#urla"/>"><s:text name="China"></s:text></a> 
-              <a href="<s:property value="#urlb"/>"><s:text name="US"></s:text></a> 
+              <a href="<s:property value="#urla"/>"><s:text name="china"></s:text></a> 
+              <a href="<s:property value="#urlb"/>"><s:text name="us"></s:text></a> 
             </div>
         </div>
     </div>

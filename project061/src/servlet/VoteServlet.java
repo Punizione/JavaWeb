@@ -32,10 +32,12 @@ import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.RingPlot;
 import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.ui.RectangleEdge;
 
 import model.GoodsInfo;
 import dao.GetDataDao;
@@ -164,7 +166,7 @@ private JFreeChart getChartForCircle() {
 	title = "各个手机品牌所得票数";
 	if(dataSet != null && dataSet.getItemCount() >0) {
 		chart = ChartFactory.createRingChart(title, dataSet, true,false, false);
-		chart.getLegend().setVisible(false);
+		chart.getLegend().setVisible(true);
 	}
 	return chart;
 	
@@ -191,11 +193,13 @@ private void myplot(String showmode, JFreeChart chart) {
 	  }else if("circle".equals(showmode)) {
 		  RingPlot ringplot = (RingPlot) chart.getPlot();
 	      ringplot.setOutlineVisible(false);
-	      ringplot.setLabelGenerator(new StandardPieSectionLabelGenerator("{2}"));
+	      ringplot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} 票数:{1}"));
+
 	        ringplot.setBackgroundPaint(new Color(253,253,253));
 	        ringplot.setOutlineVisible(false);
 	        ringplot.setLabelFont(new Font("宋体", Font.BOLD, 15));
-	        ringplot.setSimpleLabels(true);
+	        ringplot.setToolTipGenerator(new StandardPieToolTipGenerator("{0} 比例:{2}"));
+	       /*     ringplot.setSimpleLabels(true);
 	        ringplot.setLabelLinkPaint(Color.WHITE);
 	        ringplot.setLabelOutlinePaint(Color.WHITE);
 	        ringplot.setLabelLinksVisible(false);
@@ -203,6 +207,8 @@ private void myplot(String showmode, JFreeChart chart) {
 	        ringplot.setLabelOutlinePaint(new Color(0,true));
 	        ringplot.setLabelBackgroundPaint(new Color(0,true));
 	        ringplot.setLabelPaint(Color.WHITE);
+	        ringplot.setLabelLinkMargin(2);*/
+
 	        
 	        ringplot.setSectionOutlinePaint(Color.WHITE);
 	        ringplot.setSeparatorsVisible(true);
@@ -222,8 +228,14 @@ private void myplot(String showmode, JFreeChart chart) {
 	                DefaultDrawingSupplier.DEFAULT_STROKE_SEQUENCE,
 	                DefaultDrawingSupplier.DEFAULT_OUTLINE_STROKE_SEQUENCE, 
 	                DefaultDrawingSupplier.DEFAULT_SHAPE_SEQUENCE));
+	        LegendTitle legendTitle = chart.getLegend();//获得图例标题  
+	        legendTitle.setPosition(RectangleEdge.RIGHT);//图例右边显示  
+	        legendTitle.setItemFont(new Font("宋体", Font.BOLD, 14));
+	        legendTitle.setBorder(0, 0, 0, 0);//设置图例上下左右线  
+	        legendTitle.setPadding(0, 0, 0, 50);  
 
 	  }
+
 	}
 
 

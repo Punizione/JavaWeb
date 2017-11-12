@@ -10,7 +10,7 @@ public class DbManage {
   private String className="com.microsoft.sqlserver.jdbc.SQLServerDriver";
   private String url="jdbc:sqlserver://localhost:1433;DatabaseName=eshop";  
   private String user="sa";
-  private String password="123456";
+  private String password="888888";
   /** 构造方法，在该方法中加载数据库驱动  */
   public DbManage(){
     try{

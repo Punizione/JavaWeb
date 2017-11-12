@@ -32,6 +32,7 @@ public class VoteLimitFilter implements Filter {
       VoterDao voterDao=new VoterDao();
       Date now=new Date();          //获取当前时间
       Date last = voterDao.getLastVoteTime(ipnum);//获取该IP的上次投票时间  
+      System.out.println(last+"*********************************************");
       if(last==null){              //数据库中没有记录该IP，则该IP地址没有投过票
         addCookie(request,response);   //在客户端的cookie中记录该用户已经投过票  
         Object[] params={ipnum,timeTostr(now)};
@@ -45,6 +46,7 @@ public class VoteLimitFilter implements Filter {
         if(voteincookie){              //如果记录了该用户已经投过票
           request.setAttribute("message","已经投过票了，1小时内不允许重复投票！");
           RequestDispatcher rd=request.getRequestDispatcher("fail.jsp");
+          System.out.println("00000000000000000000");
           rd.forward(request,response);
         }
       //没有记录该用户是否投过票，则接着判断当前session中是否记录了用户投票的情况
@@ -53,6 +55,7 @@ public class VoteLimitFilter implements Filter {
           if("yes".equals(ido)){                //当前用户已投过票
             request.setAttribute("message","已经投过票了，1小时内不允许重复投票！");
             RequestDispatcher rd=request.getRequestDispatcher("fail.jsp");
+            System.out.println("11111111111111111111111");
             rd.forward(request,response);
           }
           else{

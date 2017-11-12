@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="sttlesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 <nav class="nav nav-sub pr w">

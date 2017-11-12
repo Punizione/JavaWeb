@@ -13,7 +13,7 @@ public class ChangeLocale implements LocaleProvider {
     public Locale getLocale() {   
         Locale locale=null;   
         if(lan.equals("1")){   
-            locale=new Locale("zh", "cn");   
+            locale=new Locale("zh", "CN");   
         }else if(lan.equals("2")){   
             locale=new Locale("en", "US");   
         }   
